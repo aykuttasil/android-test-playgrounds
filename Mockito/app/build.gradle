@@ -3,11 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion buildConfig.compileSdk
     defaultConfig {
         applicationId "com.aykutasil.mockito"
-        minSdkVersion 21
-        targetSdkVersion 28
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.compileSdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -22,11 +22,13 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.0-beta01'
-    implementation 'androidx.core:core-ktx:1.1.0-alpha03'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+    implementation "androidx.appcompat:appcompat:$versions.androidx.appcompat"
+    implementation "androidx.core:core-ktx:$versions.androidx.core"
+    implementation "androidx.constraintlayout:constraintlayout:$versions.androidx.constraint_layout"
+
+    testImplementation "junit:junit:$versions.junit"
+
+    androidTestImplementation "androidx.test:runner:$versions.androidx.test_runner"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"
 }
