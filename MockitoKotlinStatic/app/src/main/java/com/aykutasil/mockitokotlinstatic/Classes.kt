@@ -2,7 +2,7 @@ package com.aykutasil.mockitokotlinstatic
 
 import android.util.Log
 
-@OpenClassOnDebug
+@OpenForTesting
 class LogUtil {
     private val TAG = LogUtil::class.java.simpleName
     fun i(msg: String) {
@@ -10,7 +10,7 @@ class LogUtil {
     }
 }
 
-@OpenClassOnDebug
+@OpenForTesting
 object InternetConnectionHelper {
 
     @JvmStatic
@@ -24,7 +24,7 @@ data class Staff(
     val surname: String? = null
 )
 
-@OpenClassOnDebug
+@OpenForTesting
 class StaffDao(
     private val staff: Staff,
     private val log: LogUtil

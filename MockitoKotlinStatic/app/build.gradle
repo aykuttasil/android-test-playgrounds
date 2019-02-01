@@ -49,10 +49,12 @@ dependencies {
     testImplementation "org.mockito:mockito-inline:$versions.mockito_inline"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockito_kotlin"
 
-    testImplementation "org.powermock:powermock-core:2.0.0"
-    testImplementation "org.powermock:powermock-module-junit4:2.0.0"
-    testImplementation "org.powermock:powermock-module-junit4-rule:2.0.0"
-    testImplementation "org.powermock:powermock-api-mockito2:2.0.0"
+    testImplementation "org.powermock:powermock-api-mockito2:$versions.powermock"
+    testImplementation "org.powermock:powermock-core:$versions.powermock"
+    testImplementation "org.powermock:powermock-module-junit4:$versions.powermock"
+    testImplementation "org.powermock:powermock-module-junit4-rule:$versions.powermock"
+    testImplementation "org.powermock:powermock-module-junit4-rule-agent:$versions.powermock"
+    testImplementation "org.powermock:powermock-classloading-xstream:$versions.powermock"
 
     androidTestImplementation "androidx.test:runner:$versions.androidx.test_runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"

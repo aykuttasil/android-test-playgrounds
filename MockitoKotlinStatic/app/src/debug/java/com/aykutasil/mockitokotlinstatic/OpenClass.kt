@@ -5,4 +5,4 @@ annotation class OpenClass
 
 @OpenClass
 @Target(AnnotationTarget.CLASS)
-annotation class OpenClassOnDebug
+annotation class OpenForTesting
