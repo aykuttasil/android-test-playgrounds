@@ -18,6 +18,13 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -25,9 +32,17 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
     implementation "androidx.appcompat:appcompat:$versions.androidx.appcompat"
     implementation "androidx.core:core-ktx:$versions.androidx.core"
-    implementation "androidx.constraintlayout:constraintlayout:$versions.androidx.constraint_layout"
 
     testImplementation "junit:junit:$versions.junit"
+    testImplementation "org.robolectric:robolectric:$versions.robolectric"
+    testImplementation "androidx.test:core:$versions.androidx.test_core"
+    testImplementation "androidx.test:runner:$versions.androidx.test_runner"
+    testImplementation "androidx.test:rules:$versions.androidx.test_rules"
+    testImplementation "androidx.test.ext:junit:$versions.androidx.test_ext_junit"
+    testImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"
+
+    testImplementation "org.mockito:mockito-inline:$versions.mockito_inline"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockito_kotlin"
 
     androidTestImplementation "androidx.test:runner:$versions.androidx.test_runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"
