@@ -6,6 +6,8 @@ do
   p=$(dirname "${line}");
   echo "Copying versions.gradle -> ${p}";
   cp versions.gradle "$p"
+  
+  cp gradle.properties "$p"
 
   # remove the "ADMIN" line from the samples themselves
   extraArg=""
