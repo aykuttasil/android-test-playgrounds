@@ -3,13 +3,22 @@ package com.aykutasil.mockitokotlinstatic
 import com.nhaarman.mockitokotlin2.*
 import org.junit.Before
 import org.junit.Test
+import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.anyString
+import org.powermock.api.mockito.PowerMockito
+import org.powermock.core.classloader.annotations.PrepareForTest
+import org.powermock.modules.junit4.PowerMockRunner
 
+@PrepareForTest(InternetConnectionHelper::class)
+@RunWith(PowerMockRunner::class)
 class StaffRepositoryTest {
 
     private lateinit var staffRepository: StaffRepository
-    private val staffDao: StaffDao = mock()
+    private val staffDao: StaffDao = mock()//PowerMockito.mock(StaffDao::class.java)
     private val logUtil: LogUtil = mock()
+
+    //@get:Rule
+    //val powermockRule = PowerMockRule()
 
     @Before
     fun setUp() {
@@ -36,10 +45,21 @@ class StaffRepositoryTest {
     }
 
     @Test
-    fun `staff should save if internet connection is OK`() {
-        val staff = Staff()
+    fun `staff should save if internet connection enable`() {
+        PowerMockito.mockStatic(InternetConnectionHelper::class.java)
+        PowerMockito.`when`(InternetConnectionHelper.checkInternet()).thenReturn(true)
+        val staff = Staff(name = "Aykut")
+        staffRepository.saveRemoteRepo(staff)
+        verify(staffDao, atLeastOnce()).save()
+    }
+
+    @Test
+    fun `staff should  not save if internet connection disable`() {
+        PowerMockito.mockStatic(InternetConnectionHelper::class.java)
+        PowerMockito.`when`(InternetConnectionHelper.checkInternet()).thenReturn(false)
+        val staff = Staff(name = "Aykut")
         staffRepository.saveRemoteRepo(staff)
         verify(staffDao, never()).save()
     }
-    
+
 }

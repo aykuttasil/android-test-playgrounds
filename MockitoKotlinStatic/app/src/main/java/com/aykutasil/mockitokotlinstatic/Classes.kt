@@ -2,14 +2,18 @@ package com.aykutasil.mockitokotlinstatic
 
 import android.util.Log
 
-object LogUtil {
+@OpenClassOnDebug
+class LogUtil {
     private val TAG = LogUtil::class.java.simpleName
     fun i(msg: String) {
         Log.i(TAG, msg)
     }
 }
 
+@OpenClassOnDebug
 object InternetConnectionHelper {
+
+    @JvmStatic
     fun checkInternet(): Boolean {
         return true
     }
@@ -20,6 +24,7 @@ data class Staff(
     val surname: String? = null
 )
 
+@OpenClassOnDebug
 class StaffDao(
     private val staff: Staff,
     private val log: LogUtil

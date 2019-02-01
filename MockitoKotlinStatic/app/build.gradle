@@ -1,6 +1,11 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-allopen'
+
+allOpen {
+    annotation 'com.aykutasil.mockitokotlinstatic.OpenClass'
+}
 
 android {
     compileSdkVersion buildConfig.compileSdk
@@ -43,6 +48,11 @@ dependencies {
 
     testImplementation "org.mockito:mockito-inline:$versions.mockito_inline"
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:$versions.mockito_kotlin"
+
+    testImplementation "org.powermock:powermock-core:2.0.0"
+    testImplementation "org.powermock:powermock-module-junit4:2.0.0"
+    testImplementation "org.powermock:powermock-module-junit4-rule:2.0.0"
+    testImplementation "org.powermock:powermock-api-mockito2:2.0.0"
 
     androidTestImplementation "androidx.test:runner:$versions.androidx.test_runner"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"
