@@ -9,8 +9,10 @@ import org.powermock.api.mockito.PowerMockito
 import org.powermock.core.classloader.annotations.PrepareForTest
 import org.powermock.modules.junit4.PowerMockRunner
 
-@PrepareForTest(InternetConnectionHelper::class)
 @RunWith(PowerMockRunner::class)
+// @PowerMockRunnerDelegate(AndroidJUnit4::class)
+// @PowerMockIgnore(value = ["org.mockito.*", "org.robolectric.*", "android.*", "androidx.*"])
+@PrepareForTest(InternetConnectionHelper::class)
 class StaffRepositoryTest {
 
     private lateinit var staffRepository: StaffRepository
@@ -18,7 +20,7 @@ class StaffRepositoryTest {
     private val logUtil: LogUtil = mock()
 
     //@get:Rule
-    //val powermockRule = PowerMockRule()
+    //val powerMockitoRule = PowerMockRule()
 
     @Before
     fun setUp() {
