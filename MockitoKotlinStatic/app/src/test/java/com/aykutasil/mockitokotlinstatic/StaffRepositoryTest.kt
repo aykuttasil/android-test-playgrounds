@@ -62,6 +62,9 @@ class StaffRepositoryTest {
         val staff = Staff(name = "Aykut")
         staffRepository.saveRemoteRepo(staff)
         verify(staffDao, never()).save()
+
+        PowerMockito.verifyStatic(InternetConnectionHelper::class.java, only())
+        InternetConnectionHelper.checkInternet()
     }
 
 }
