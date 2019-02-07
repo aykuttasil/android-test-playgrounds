@@ -1,0 +1,26 @@
+apply from: './versions.gradle'
+buildscript {
+    apply from: './versions.gradle'
+    repositories {
+        google()
+        jcenter()
+
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:$versions.android_gradle"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+        classpath "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        maven { url "https://dl.bintray.com/mockito/maven/" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
