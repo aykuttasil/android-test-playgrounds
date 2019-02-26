@@ -4,6 +4,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.HandlerThread
+import androidx.test.espresso.IdlingRegistry
+import androidx.test.espresso.IdlingResource
+import androidx.test.espresso.idling.CountingIdlingResource
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -11,8 +14,14 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import androidx.annotation.NonNull
+import androidx.annotation.VisibleForTesting
+
 
 class MainActivity : AppCompatActivity() {
+
+
+    var idlingResource = CountingIdlingResource("abc")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,19 +35,24 @@ class MainActivity : AppCompatActivity() {
         val handler = Handler(handlerThread.looper)
 
         btnRequest.setOnClickListener {
+            idlingResource.increment()
             handler.post {
                 apiManager.getApiService().users().enqueue(object : Callback<Users> {
                     override fun onFailure(call: Call<Users>, t: Throwable) {
+                        idlingResource.decrement()
                         t.printStackTrace()
                     }
 
                     override fun onResponse(call: Call<Users>, response: Response<Users>) {
+                        idlingResource.decrement()
+                        txtMsg.text = response.body()?.name ?: ""
                         println(response.body())
                     }
                 })
             }
         }
     }
+
 
 }
 

@@ -43,6 +43,12 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$versions.androidx.appcompat"
     implementation "androidx.core:core-ktx:$versions.androidx.core"
 
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit_converter_gson"
+
+    implementation 'androidx.test.espresso:espresso-idling-resource:' + versions.androidx.espresso_idling
+
     testImplementation "junit:junit:$versions.junit"
     testImplementation "org.robolectric:robolectric:$versions.robolectric"
     testImplementation "androidx.test:core:$versions.androidx.test_core"
@@ -58,11 +64,6 @@ dependencies {
     androidTestImplementation "androidx.test:rules:$versions.androidx.test_rules"
     androidTestImplementation "androidx.test.ext:junit:$versions.androidx.test_ext_junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"
-
-
-    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
-    implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
-    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit_converter_gson"
 
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:$versions.mock_web_server"
 

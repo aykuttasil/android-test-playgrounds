@@ -16,6 +16,7 @@ ext.versions = [
                 'emoji'            : '1.0.0',
                 'espresso_core'    : '3.1.1',
                 'espresso_contrib' : '3.1.1',
+                'espresso_idling'  : '3.1.1',
                 'lifecycle'        : '2.0.0',
                 'multidex'         : '2.0.1',
                 'paging'           : '2.0.0',
