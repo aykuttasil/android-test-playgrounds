@@ -1,4 +1,4 @@
-package com.aykuttasil.mockserver
+package com.aykutasil.mockserver
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

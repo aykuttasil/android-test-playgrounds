@@ -1,4 +1,4 @@
-package com.aykuttasil.mockserver
+package com.aykutasil.mockserver
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

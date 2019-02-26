@@ -1,15 +1,18 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-allopen'
+
+allOpen {
+    annotation 'com.aykutasil.mockserver.OpenClass'
+}
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion buildConfig.compileSdk
     defaultConfig {
-        applicationId "com.aykuttasil.mockserver"
-        minSdkVersion 21
-        targetSdkVersion 28
+        applicationId "com.aykutasil.mockserver"
+        minSdkVersion buildConfig.minSdk
+        targetSdkVersion buildConfig.compileSdk
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -20,15 +23,36 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests {
+            returnDefaultValues = true
+            includeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.1'
-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+    implementation "androidx.appcompat:appcompat:$versions.androidx.appcompat"
+    implementation "androidx.core:core-ktx:$versions.androidx.core"
+
+    testImplementation "junit:junit:$versions.junit"
+    testImplementation "org.robolectric:robolectric:$versions.robolectric"
+    testImplementation "androidx.test:core:$versions.androidx.test_core"
+    testImplementation "androidx.test:runner:$versions.androidx.test_runner"
+    testImplementation "androidx.test:rules:$versions.androidx.test_rules"
+    testImplementation "androidx.test.ext:junit:$versions.androidx.test_ext_junit"
+    testImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"
+
+    testImplementation "io.mockk:mockk:" + versions.mockk
+
+    androidTestImplementation "androidx.test:core:$versions.androidx.test_core"
+    androidTestImplementation "androidx.test:runner:$versions.androidx.test_runner"
+    androidTestImplementation "androidx.test:rules:$versions.androidx.test_rules"
+    androidTestImplementation "androidx.test.ext:junit:$versions.androidx.test_ext_junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"
+
+    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$versions.mock_web_server"
 }

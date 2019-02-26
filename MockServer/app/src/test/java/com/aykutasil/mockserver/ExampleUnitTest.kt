@@ -1,4 +1,4 @@
-package com.aykuttasil.mockserver
+package com.aykutasil.mockserver
 
 import org.junit.Test
 
