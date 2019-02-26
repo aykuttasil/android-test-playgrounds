@@ -30,6 +30,11 @@ android {
             includeAndroidResources = true
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -54,5 +59,11 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$versions.androidx.test_ext_junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$versions.androidx.espresso_core"
 
+
+    implementation "com.squareup.retrofit2:retrofit:$versions.retrofit"
+    implementation "com.squareup.okhttp3:okhttp:$versions.okhttp"
+    implementation "com.squareup.retrofit2:converter-gson:$versions.retrofit_converter_gson"
+
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:$versions.mock_web_server"
+
 }
