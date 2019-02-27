@@ -20,6 +20,9 @@ import androidx.annotation.VisibleForTesting
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        var BASE_URL = "https://jsonplaceholder.typicode.com/"
+    }
 
     var idlingResource = CountingIdlingResource("abc")
 
@@ -27,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val apiManager = ApiManager()
+        val apiManager = ApiManager(BASE_URL)
 
         val handlerThread = HandlerThread("xyz")
         handlerThread.start()
@@ -52,15 +55,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
 }
 
-class ApiManager {
+
+class ApiManager(val baseUrl: String) {
 
     fun getApiService(): ApiService {
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
